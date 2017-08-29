@@ -3,20 +3,31 @@
 
 int fibonacci(int n)
 {
-	int a = 1;
-	int b = 1;
-	int c = 1;
+	int x = 1;
+	int y = 1;
+	int z = 1;
 
 	if (n == 0) return 1;
 	if (n == 1) return 1;
 
 	for (int i = 2; i < n; ++i)
 	{
-	    c = a + b;
-		a = b;
-		b = c;	
+	    z = x + y;
+		x = y;
+		y = z;	
 	}
-    return b;
+    return y;
+}
+
+int factorial(int n)
+{
+	int x = 1;
+
+	for (int i = 1; i <= n; ++i)
+	{
+		x *= i;
+	}
+	return x;
 }
 
 void printMenu()
@@ -55,5 +66,27 @@ int main(int argc, char *argv[])
         {
 		    std::cout << "Fibonacci of " << n << " is: " << fibonacci(n) << std::endl;
 		}
+	}
+	else if(option == "-e")
+	{
+		if(n < 0)
+		{
+			printMenu();
+			return 1;
+		}
+		else if(n > 30)
+		{
+			printMenu();
+			return 1;
+		}
+		else
+		{
+			std::cout << n << " iterations of e is: " << factorial(n) << std::endl;
+		}
+	}
+	else
+	{
+		printMenu();
+		return 1;
 	}
 }
