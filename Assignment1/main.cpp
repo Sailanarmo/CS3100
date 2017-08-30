@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <cmath>
+#include <iomanip>
 
 int fibonacci(int n)
 {
@@ -19,13 +21,25 @@ int fibonacci(int n)
     return y;
 }
 
-int factorial(int n)
+double e(int n)
 {
-	int x = 1;
-
-	for (int i = 1; i <= n; ++i)
+	double x = 1.0;
+	double y = 1.0;
+	for (double i = 1.0; i <= n; ++i)
 	{
 		x *= i;
+		y = y + 1.0/x;
+	}
+	return y;
+}
+
+float pi(int n)
+{
+	float x = 0.0;
+	for (int i = 0; i < n; ++i)
+	{
+	//	x = x + ((std::pow(-1,i))/((2*i)+1));
+		x = x + (((1.0)/(std::pow(16,i)))*(((4.0)/((8.0*i)+1.0))-((2.0)/((8.0*i)+4.0))-((1.0)/((8.0*i)+5))-((1.0)/((8.0*i)+6))));
 	}
 	return x;
 }
@@ -81,7 +95,24 @@ int main(int argc, char *argv[])
 		}
 		else
 		{
-			std::cout << n << " iterations of e is: " << factorial(n) << std::endl;
+			std::cout << n << " iterations of e is: " << std::fixed << std::setprecision(40) <<e(n) << std::endl;
+		}
+	}
+	else if(option == "-pi")
+	{
+		if(n < 1)
+		{
+			printMenu();
+			return 1;
+		}
+		else if(n > 10)
+		{
+			printMenu();
+			return 1;
+		}
+		else
+		{
+			std::cout << n << " digits of Pi is: " << std::fixed << std::setprecision(20) << pi(n) << std::endl;
 		}
 	}
 	else
@@ -89,4 +120,6 @@ int main(int argc, char *argv[])
 		printMenu();
 		return 1;
 	}
+
+	return 0;
 }
