@@ -1,0 +1,59 @@
+Goals for an OS
+	-> Fundamental purpose: Execute user programs, making solving problems easier.
+	-> Convenient to use
+	-> Utilize the hardware in efficient manner.
+
+
+	_________	 _________________________	 _______
+	| User 1| -> | System & User Programs| <-|User 2| 
+				 |_______________________|
+					| Operating Sys  |
+					|________________|
+					  |  Hardware  |
+					  |____________|
+
+Hardware:
+	-> CPU, Memory, Disk, IO Devices
+
+OS
+	-> Coordinates the Hardware
+
+App Programs
+	-> Solving Problems
+
+Users
+	-> People, other computers
+
+Two System Views
+	-> User View
+		-> Easy to use
+		-> Responsive UI
+	-> System View
+		-> Resource Allocator
+		-> Managing Conflicting Requests
+		-> Efficiency
+
+OS Definition:
+	-> Resource Allocator
+	-> Control Program, controlling execution of programs
+
+
+
+										  Mouse Keyboard Printer	       Monitor
+_________			___________________		__________________		____________________
+|       |			|				  |		|				 |		|				   |
+|  CPU  |			| Disk Contorller |		| USB Controller |		| Graphics Adapter |
+|_______|			|_________________|		|________________|		|__________________|
+	|						|						|						  |
+	|_______________________|_______________________|_________________________|
+													|
+													|
+											 Memory controller
+													|
+											________|_________
+											|_____Memory_____|
+
+-> Hardware Devices Executing concurrently
+-> Device Controllers
+-> CPU Moves Data to/from devices
+-> Device completion, generates an interrupt

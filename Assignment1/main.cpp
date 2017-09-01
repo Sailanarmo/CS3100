@@ -2,6 +2,7 @@
 #include <string>
 #include <cmath>
 #include <iomanip>
+#include <cfenv>
 
 int fibonacci(int n)
 {
@@ -112,7 +113,8 @@ int main(int argc, char *argv[])
 		}
 		else
 		{
-			std::cout << n << " digits of Pi is: " << std::fixed << std::setprecision(20) << pi(n) << std::endl;
+			std::fesetround(FE_DOWNWARD); //Found from Stack Overflow.
+			std::cout << n << " digits of Pi is: " << std::fixed << std::setprecision(n) << pi(n) << std::endl;
 		}
 	}
 	else
