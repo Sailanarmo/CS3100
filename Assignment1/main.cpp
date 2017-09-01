@@ -4,6 +4,39 @@
 #include <iomanip>
 #include <cfenv>
 
+/*
+
+=====================================================================
+
+This program implements the command line to as the user for input.
+The user will have to run the executable and give 2 arguments. The
+first argument will be the program they wish to run, the second 
+argument will be how many iterations or digits, depending on the 
+program. 
+
+Ex) ./Assign1 -fib 10 
+
+This will execute the program, run the fibonacci version, and execute 
+the fibonacci sequence 10 times.
+
+Options:
+
+	Fibonacci: -fib n [0-40]
+	e:         -e   n [0-30]
+	Pi:        -pi  n [1-10]
+
+The flab being the program to run, n being the number that you would
+like to give.
+
+======================================================================
+
+*/
+
+
+/*
+This function will run the fibonacci sequence. It takes an integer n,
+and returns the fibonacci number requested.
+*/
 int fibonacci(int n)
 {
 	int x = 1;
@@ -22,6 +55,11 @@ int fibonacci(int n)
     return y;
 }
 
+/*
+This function computes e to however many iterations the user requests.
+It takes an integer n, and returns a double of the calculation of e.
+*/
+
 double e(int n)
 {
 	double x = 1.0;
@@ -34,25 +72,42 @@ double e(int n)
 	return y;
 }
 
+/*
+This function computes digits of pi. It takes an integer n, and 
+returns the digits of pi requested as a double.
+*/
+
 double pi(int n)
 {
 	double x = 0.0;
 	for (int i = 0; i < n; ++i)
 	{
-	//	x = x + ((std::pow(-1,i))/((2*i)+1));
+		//This is Bailey-Borwein-Plouffe's Formula.
 		x = x + (((1.0)/(std::pow(16,i)))*(((4.0)/((8.0*i)+1.0))-((2.0)/((8.0*i)+4.0))-((1.0)/((8.0*i)+5))-((1.0)/((8.0*i)+6))));
 	}
 	return x;
 }
 
+/*
+This Menu is printed when the user does not provide enough arguments.
+*/
+
 void printMenu()
 {
-	std::cout << "     --- Assign 1 Help ---" << std::endl;
+	std::cout << std::endl;
+	std::cout << "        --- Assign 1 Help ---" << std::endl;
 	std::cout << " -fib [n] : Compute the fibonacci of [n]" << std::endl;
 	std::cout << " -e   [n] : Compute the value 'e' using [n] iterations" << std::endl;
 	std::cout << " -pi  [n] : Compute Pi to [n] digits" << std::endl;
+	std::cout << std::endl;
 }
 
+/*
+Main must take 3 arguments and then run a specific program. If main
+does not receive enough arguments, print out an error message and 
+exit the program gracefully. If the user gives enough arguments, 
+then it handles the program as stated.
+*/
 
 int main(int argc, char *argv[])
 {
