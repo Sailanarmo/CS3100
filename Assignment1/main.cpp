@@ -34,9 +34,9 @@ double e(int n)
 	return y;
 }
 
-float pi(int n)
+double pi(int n)
 {
-	float x = 0.0;
+	double x = 0.0;
 	for (int i = 0; i < n; ++i)
 	{
 	//	x = x + ((std::pow(-1,i))/((2*i)+1));
