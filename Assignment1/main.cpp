@@ -95,10 +95,10 @@ This Menu is printed when the user does not provide enough arguments.
 void printMenu()
 {
 	std::cout << std::endl;
-	std::cout << "        --- Assign 1 Help ---" << std::endl;
-	std::cout << " -fib [n] : Compute the fibonacci of [n]" << std::endl;
-	std::cout << " -e   [n] : Compute the value 'e' using [n] iterations" << std::endl;
-	std::cout << " -pi  [n] : Compute Pi to [n] digits" << std::endl;
+	std::cout << "          --- Assign 1 Help ---" << std::endl;
+	std::cout << " -fib [n] : Compute the fibonacci of [n]; [0-40]" << std::endl;
+	std::cout << " -e   [n] : Compute the value 'e' using [n] iterations; [1-30]" << std::endl;
+	std::cout << " -pi  [n] : Compute Pi to [n] digits; [1-10]" << std::endl;
 	std::cout << std::endl;
 }
 
@@ -124,11 +124,15 @@ int main(int argc, char *argv[])
 	{
 		if(n < 0)
 		{
+			std::cout << std::endl;
+			std::cout << "		Invalid Range for Fibonacci!" << std::endl;
 		    printMenu();
 			return 1;
 		}
 		else if(n > 40)
 		{
+			std::cout << std::endl;
+			std::cout << "		Invalid Range for Fibonacci!" << std::endl;
 		    printMenu();
 			return 1;
 		}
@@ -141,11 +145,15 @@ int main(int argc, char *argv[])
 	{
 		if(n < 0)
 		{
+			std::cout << std::endl;
+			std::cout << "		Invalid Range for e!" << std::endl;
 			printMenu();
 			return 1;
 		}
 		else if(n > 30)
 		{
+			std::cout << std::endl;
+			std::cout << "		Invalid Range for e!" << std::endl;
 			printMenu();
 			return 1;
 		}
@@ -158,11 +166,15 @@ int main(int argc, char *argv[])
 	{
 		if(n < 1)
 		{
+			std::cout << std::endl;
+			std::cout << "		Invalid Range for Pi!" << std::endl;
 			printMenu();
 			return 1;
 		}
 		else if(n > 10)
 		{
+			std::cout << std::endl;
+			std::cout << "		Invalid Range for Pi!" << std::endl;
 			printMenu();
 			return 1;
 		}
