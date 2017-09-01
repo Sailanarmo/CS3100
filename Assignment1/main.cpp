@@ -143,7 +143,7 @@ int main(int argc, char *argv[])
 	}
 	else if(option == "-e")
 	{
-		if(n < 0)
+		if(n < 1)
 		{
 			std::cout << std::endl;
 			std::cout << "		Invalid Range for e!" << std::endl;
