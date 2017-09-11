@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sailanarmo/Documents/CS3100/Assignment2/compute-e.cpp
+compute-e.hpp
+/home/sailanarmo/Documents/CS3100/Assignment2/compute-e.hpp
+
+/home/sailanarmo/Documents/CS3100/Assignment2/compute-e.hpp
+
+/home/sailanarmo/Documents/CS3100/Assignment2/compute-fib.cpp
+compute-fib.hpp
+/home/sailanarmo/Documents/CS3100/Assignment2/compute-fib.hpp
+
+/home/sailanarmo/Documents/CS3100/Assignment2/compute-fib.hpp
+
+/home/sailanarmo/Documents/CS3100/Assignment2/compute-pi.cpp
+compute-pi.hpp
+/home/sailanarmo/Documents/CS3100/Assignment2/compute-pi.hpp
+cmath
+-
+
+/home/sailanarmo/Documents/CS3100/Assignment2/compute-pi.hpp
+
+/home/sailanarmo/Documents/CS3100/Assignment2/main.cpp
+iostream
+-
+string
+-
+iomanip
+-
+cfenv
+-
+compute-fib.hpp
+/home/sailanarmo/Documents/CS3100/Assignment2/compute-fib.hpp
+compute-e.hpp
+/home/sailanarmo/Documents/CS3100/Assignment2/compute-e.hpp
+compute-pi.hpp
+/home/sailanarmo/Documents/CS3100/Assignment2/compute-pi.hpp
+
