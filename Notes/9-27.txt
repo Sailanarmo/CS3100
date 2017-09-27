@@ -1,0 +1,35 @@
+Process Scheduling
+	We want to keep our computer fully utilized.
+	Two Types of processes:
+		CPU Bound
+		I/O Bound
+		
+	Long Term
+		Minutes or More, determines which kinds of processes should be put into the ready queue
+			
+	Medium Term
+		Increase or decrease of degree of multiprogram
+
+	Short Term 
+		Decides which process executes next
+
+Context Switch
+	CPU Mode
+		User->Kernal
+		Kernal->User
+	Save prcess state
+	Pure overhead
+
+Operations on Processes
+	Parents create child processes
+		Resource Sharing
+			Share all resources
+			Share a subset
+			No Share
+		Execution
+			Concurrently
+			Parent can wait for the child
+		Address Space
+			Duplicate, this is what fork does
+			New address space, this is what execvp does
+
