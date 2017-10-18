@@ -1,0 +1,16 @@
+Readers/Writers
+
+	Have Some Share resource, file
+	2 Types of processes:
+		Readers
+		Writers
+	Two parts
+		No readers waits, unless writer has the resource
+		Once a writer requests, no additional readers.
+
+	Writer
+		wait(wrt)
+		   .
+		   .
+		   .
+		Signal(wrt)

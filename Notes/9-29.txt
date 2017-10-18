@@ -1,0 +1,48 @@
+Interprocess Communication (IPC)
+	Mechanism
+	Communicate & Synchronize
+	Two kids of processes
+		Independent: Not affected by other processes
+		Cooperating: can be affected
+
+	Why?
+		Information sharing
+		Convenience
+		Computation Speed up
+		Modularity
+
+Two IPC Operations
+	Send(message)
+	receive(message)
+
+Types of Links
+	Physical: Shared memory, hardware bus, network cable, etc.
+	Logical: Buffers, message passing
+	
+IPC Implementation Issues
+	How should the link be established?
+	More than two processes?
+	How many links between processes?
+	Capacity/Bandwidth?
+	Fixed or resizabled size messages
+	Uni or Bi
+
+Consumer-Producer Paradigm
+	Producer: Makes things
+	Consumer: Consumes 
+
+Communication Models
+	Message Passing
+		Generate Msg in Process A
+		Copy to Kernel
+		Copy to Process B
+	
+	Shared Memory
+
+Direct Communication
+	Link Properties
+		one Link
+		Established Automatically
+
+
+Indirect Communication

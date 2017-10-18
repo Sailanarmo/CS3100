@@ -1,0 +1,39 @@
+Multi-Core Development
+	Concurrency: Allow progress on more than one task
+			
+	Parallelism: Progress on more than one simultaneously
+
+Programming Challenges
+	Dividing the activities
+		What are all the different things that can be done in the system? Or simultaneously
+	Balance
+		Physics for example
+	Data Splitting
+	Data Dependencies 
+	Testing and Debugging
+
+Types of Parallelism
+	Data Parallelism
+		
+	Task Parallelism
+
+Amdahl's Law
+	Speedup <= \frac{1}{S + \frac{(1-S)}{N}}
+	
+	S - Serial Portion
+	N - Number of Processing Cores
+
+	S:25%
+		Move from one to two cores = 1.6, which is 60% speedup
+
+Cores	Serial	Speedup		Serial	Speedup		Serial	Speedup
+1		 .25	1.00        .05		1.00
+2		  |		1.65		 |		1.33
+3		  |		2.00		 |		1.50	
+4		  |		2.27		 |		1.60
+5		  |		2.50		 |		1.67
+6		  v		2.67		 v
+
+
+
+

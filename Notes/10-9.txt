@@ -1,0 +1,28 @@
+Thread API
+	User
+		POS(XThreads(PThread)
+		Mech(-Threads)
+		Solaris Threads
+	Kernal
+		Windows, Linux, MacOSX
+
+Threading Issues
+	Semantics of fork()
+		Should we duplicated all threads?
+		Two Fork Commands
+	Cancelation
+		Asychronous
+		Deferred
+
+Signal Handling
+	What is a Signal? Which Thread?
+		Control + c is a signal, it terminates whatever program you are running.
+	Handled?
+		Default handler
+		Process Defined
+
+Thread Pools
+	An application can say, "Create a pool of 10 threads dedicated for my application."
+	Faster to create a new thread than a process
+	Faster to reuse a thread than create a new thread.
+	Limit the make number of threads

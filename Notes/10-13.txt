@@ -1,0 +1,8 @@
+NProcess Solution: Baker's Algorithm
+	Take a number
+	Serve one number at a time
+
+Three Criteria for CS
+	Mutual Exclusion
+	Progress: Only those trying to access the resource can affect the next process to access the resource
+	Bounded Waiting Time

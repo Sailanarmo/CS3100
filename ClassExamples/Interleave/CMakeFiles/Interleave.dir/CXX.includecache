@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sailanarmo/Documents/CS3100/ClassExamples/Interleave/interleave.cpp
+interleave.hpp
+/home/sailanarmo/Documents/CS3100/ClassExamples/Interleave/interleave.hpp
+iostream
+-
+sys/types.h
+-
+sys/ipc.h
+-
+sys/shm.h
+-
+
+/home/sailanarmo/Documents/CS3100/ClassExamples/Interleave/interleave.hpp
+
+/home/sailanarmo/Documents/CS3100/ClassExamples/Interleave/main.cpp
+interleave.hpp
+/home/sailanarmo/Documents/CS3100/ClassExamples/Interleave/interleave.hpp
+

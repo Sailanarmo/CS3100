@@ -1,0 +1,24 @@
+Mutual Exclusion (Mutex), a semaphore with a count of 1
+	
+	If P, is in it's critical section then no other process can be in the CS.
+
+Semaphore, a semapohore can access multiple resources at the same time
+
+	Sync tool that doesn't require busy waiting.
+	Two Operations
+		Wait
+			wait()
+			{
+				while (s <= 0);
+				s--
+			}
+
+		Signal
+			signal()
+			{
+				s++;
+			}
+
+
+Atomic Operation
+	

@@ -81,10 +81,12 @@ void Shell::forkIt(std::string input, std::vector<std::string> &arg)
 
 		int status;
 		//start clock
-		std::chrono::time_point<std::chrono::high_resolution_clock> start = std::chrono::high_resolution_clock::now();
+		//std::chrono::time_point<std::chrono::high_resolution_clock> start = std::chrono::high_resolution_clock::now();
+		auto start = std::chrono::high_resolution_clock::now();
 		waitpid(child,&status,0);
 		//stop clock
-		std::chrono::time_point<std::chrono::high_resolution_clock> end = std::chrono::high_resolution_clock::now();
+		//std::chrono::time_point<std::chrono::high_resolution_clock> end = std::chrono::high_resolution_clock::now();
+		auto end = std::chrono::high_resolution_clock::now();
 		time += time + (end - start);
 		if(status != EXIT_SUCCESS)
 		{
@@ -126,11 +128,11 @@ void Shell::runProgram(std::string input)
 		{
 			std::cout << "No programs in history to execute." << std::endl;
 			arguments.clear();
-		}
+		}	
 		else
 		{
 			int n = std::stoi(arguments[0]);
-			std::string hist = history[n-1];
+			std::string hist = history[n-1];	
 			arguments.clear();
 			parseIt(hist);
 		}

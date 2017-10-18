@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sailanarmo/Documents/CS3100/Assignment3/main.cpp
+shell.hpp
+/home/sailanarmo/Documents/CS3100/Assignment3/shell.hpp
+
+/home/sailanarmo/Documents/CS3100/Assignment3/shell.cpp
+shell.hpp
+/home/sailanarmo/Documents/CS3100/Assignment3/shell.hpp
+iostream
+-
+cstdlib
+-
+unistd.h
+-
+sstream
+-
+cstring
+-
+sys/types.h
+-
+sys/wait.h
+-
+signal.h
+-
+
+/home/sailanarmo/Documents/CS3100/Assignment3/shell.hpp
+vector
+-
+string
+-
+chrono
+-
+

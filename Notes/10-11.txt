@@ -1,0 +1,56 @@
+Producer - Consumer Problem
+
+	Producer
+		while (counter == MAXSIZE)
+			do nothing
+
+		Produce Something, addToBuffer
+		counter++
+
+	Consumer
+		While (counter == 0)
+			do nothing
+		
+		consume something,remove from buffer
+		counter--
+
+
+	counter: 5
+
+		counter++
+			load reg,router
+			inc  reg
+			load counter, reg
+
+		counter--
+			load reg,counter
+			dec  reg
+			load counter,reg
+
+		producer: reg,counter
+
+		producer
+			reg: 5
+	
+		producer: inc reg
+			reg: 6
+
+		consumer: reg,counter
+			reg: 5
+			
+		consumer: dec, reg
+			reg: 4
+
+		consumer: counter, reg
+			counter: 4
+
+		producer: counter, reg
+			counter: 6
+
+Problem: n processes competing for e shared resource 
+
+Solution: Critical Section
+
+	Begin CS
+		Access Shared Resource
+	End CS
