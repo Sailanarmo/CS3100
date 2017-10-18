@@ -62,6 +62,8 @@ void Pipe::pipeIt()
 		argv[arg.size() + 1] = NULL;
 		
 		execvp(argv[0],argv);
+		perror(argv[0]);
+		exit(EXIT_FAILURE);
 	}
 
 	pid_t pid2 = fork();
@@ -75,7 +77,9 @@ void Pipe::pipeIt()
 		strcpy(argv[0], prog2.c_str());
 		argv[1] = NULL;
 		
-		execvp(argv[0], argv);		
+		execvp(argv[0], argv);
+		perror(argv[0]);
+		exit(EXIT_FAILURE);	
 	}
 
 
