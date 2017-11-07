@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sailanarmo/Documents/CS3100/Assignment5/compPi.cpp
+compPi.hpp
+/home/sailanarmo/Documents/CS3100/Assignment5/compPi.hpp
+
+/home/sailanarmo/Documents/CS3100/Assignment5/compPi.hpp
+stdlib.h
+-
+stdio.h
+-
+math.h
+-
+
+/home/sailanarmo/Documents/CS3100/Assignment5/main.cpp
+iostream
+-
+vector
+-
+chrono
+-
+thread
+-
+mutex
+-
+queue
+-
+unordered_map
+-
+compPi.hpp
+/home/sailanarmo/Documents/CS3100/Assignment5/compPi.hpp
+
