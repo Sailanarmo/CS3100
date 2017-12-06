@@ -1,11 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-#include <deque>
 #include <random>
 #include <chrono>
-#include <string>
-#include <sstream>
 #include <unordered_map>
 
 int randNum()
@@ -14,7 +11,7 @@ int randNum()
 
 	std::random_device rd;
 	std::mt19937 mt(rd());
-	std::uniform_int_distribution<> unif(0,9);
+	std::uniform_int_distribution<> unif(1,250);
 
 	rand = unif(mt);
 
@@ -24,80 +21,66 @@ int randNum()
 
 int main()
 {
-	std::string number;
-	int n, pos;
-	int counter = 0;
-	//std::deque<int> debug(3,100);
+	int n, pos, oldFaults;
+	int faults = 0;
+	unsigned int iter = 0;
 	std::queue<int> fifo;
 	std::unordered_map<int,int> hash;
-/*	
-	for (auto i = 0; i < 1000; ++i)
+	std::chrono::duration<double> time;
+	std::vector<std::vector<int>> cont;
+
+	for (int i = 0; i < 100; ++i)
 	{
-		number.append(std::to_string(randNum()%10) + " ");
-		//queue.emplace(randNum());
+		std::vector<int> temp;
+		for(int j = 0; j < 1000; ++j)
+		{
+			temp.emplace_back(randNum());
+		}
+		cont.emplace_back(temp);
 	}
-*/			
-	//int plz = hash[0];
-	//std::cout << plz << std::endl;
-
-	//number = "1 2 3 1 4 1 7 9";
-	number = "1 2 3 4 1 2 5 1 2 3 4 5";
-	std::cout << fifo.size() << std::endl;
-	int iter = 0;	
-	std::istringstream numbers(number);
-	while(numbers >> n)	
-	{
-		std::cout << "Hash size: " << hash.size() << std::endl;
-		std::cout << "Queue size: " << fifo.size() << std::endl;	
-		std::cout << std::endl;
-/*
-		
-		if (hash.count(n) == 0)
-		{
-			hash.emplace(iter, n);
-			fifo.emplace(n);
-			std::cout << "Inserting in Queue: " << n << std::endl;
-			counter++;
-		}
-		else if (hash.size() > 3)
-		{
-			pos = fifo.front();
-			std::cout << "Replacing " << pos << " with: " << n << std::endl;
-			std::cout << std::endl;
-			fifo.pop();
-			hash[pos] = n;
-			//hash.emplace(iter,n);
-			fifo.emplace(n);
-			counter++;
-		}
-*/
-
-
-		if (hash.count(n) == 0)
-		{
-			if (hash.size() > 3 || fifo.size() > 3)
-			{
-				pos = fifo.front();
-				std::cout << "Replacing " << pos << " with: " << n << std::endl;
-				std::cout << std::endl;
-				fifo.pop();
-				hash.erase(pos);
-				//hash[pos] = n;
-				hash.emplace(iter,n);
-				fifo.emplace(n);
-				counter++;
-				continue;
-			}
-			hash.emplace(iter, n);
-			fifo.emplace(n);
-			std::cout << "Inserting in Queue: " << n << std::endl;
-			counter++;
-		}
-		iter++;	
-	}
-	std::cout << counter << std::endl;
 	
-	std::cout << number << std::endl;
-
+	auto start = std::chrono::high_resolution_clock::now();	
+	for(int seq = 0; seq < 100; ++seq)
+	{
+		for(unsigned int i = 0; i < 100; ++i)
+		{	// frames
+			while(iter < cont[seq].size())
+			{
+				n = cont[seq][iter];
+				if (hash.count(n) == 0)
+				{
+					if (fifo.size() >= i+1)
+					{
+						pos = fifo.front();
+						hash.erase(pos);
+						fifo.pop();
+					}
+					hash[n] = iter;
+					fifo.push(n);
+					faults++;
+				}
+				iter++;	
+			}
+			if(faults > oldFaults && oldFaults !=0)
+			{
+				std::cout << "Anomoly detected!" << std::endl;
+				std::cout << "    Sequence: " << seq+1 << std::endl;
+				std::cout << "    Page Faults: " << oldFaults << " @ Frame Size: " << i-1 << std::endl;
+				std::cout << "    Page Faults: " << faults << " @ Frame Size: " << i << std::endl;
+			}
+			oldFaults = faults;
+			faults = 0;
+			hash.clear();
+			std::queue<int> empty;
+			std::swap(empty, fifo);
+			iter = 0;
+		}
+		oldFaults = 0;	
+	}
+	
+	auto end = std::chrono::high_resolution_clock::now();
+	time = end - start;
+	
+	std::cout << "Computation took: " << time.count() << "s." << std::endl;	
 }
 

@@ -2,7 +2,7 @@ OBJS = belady.cpp
 
 CC = g++
 DEBUG_FLAGS = -O0 -g3 -fsanitize=address
-RELEASE_FLAGS = -pthread -Ofast -g0 
+RELEASE_FLAGS =  -O3 -g0 
 FLAGS = -std=c++14 -Wall -Wextra
 
 release: $(OBJS)
