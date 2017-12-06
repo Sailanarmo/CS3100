@@ -1,6 +1,7 @@
 #include <iostream>
+#include <array>
 #include <vector>
-#include <queue>
+#include <deque>
 #include <random>
 #include <chrono>
 #include <unordered_map>
@@ -23,27 +24,30 @@ int main()
 {
 	int n, pos, oldFaults;
 	int faults = 0;
+	int anom = 0;
 	unsigned int iter = 0;
-	std::queue<int> fifo;
+	std::deque<int> fifo;
+	std::array<std::array<int,1000>,100> cont;
 	std::unordered_map<int,int> hash;
 	std::chrono::duration<double> time;
-	std::vector<std::vector<int>> cont;
+	//std::vector<std::vector<int>> cont;
 
 	for (int i = 0; i < 100; ++i)
 	{
 		std::vector<int> temp;
 		for(int j = 0; j < 1000; ++j)
 		{
-			temp.emplace_back(randNum());
+			//temp.emplace_back(randNum());
+			cont[i][j] = randNum();
 		}
-		cont.emplace_back(temp);
+//		cont.emplace_back(temp);
 	}
 	
 	auto start = std::chrono::high_resolution_clock::now();	
 	for(int seq = 0; seq < 100; ++seq)
 	{
 		for(unsigned int i = 0; i < 100; ++i)
-		{	// frames
+		{	
 			while(iter < cont[seq].size())
 			{
 				n = cont[seq][iter];
@@ -53,10 +57,10 @@ int main()
 					{
 						pos = fifo.front();
 						hash.erase(pos);
-						fifo.pop();
+						fifo.pop_front();
 					}
 					hash[n] = iter;
-					fifo.push(n);
+					fifo.emplace_back(n);
 					faults++;
 				}
 				iter++;	
@@ -67,12 +71,14 @@ int main()
 				std::cout << "    Sequence: " << seq+1 << std::endl;
 				std::cout << "    Page Faults: " << oldFaults << " @ Frame Size: " << i-1 << std::endl;
 				std::cout << "    Page Faults: " << faults << " @ Frame Size: " << i << std::endl;
+				anom++;
 			}
 			oldFaults = faults;
 			faults = 0;
 			hash.clear();
-			std::queue<int> empty;
-			std::swap(empty, fifo);
+			fifo.clear();
+//			std::queue<int> empty;
+//			std::swap(empty, fifo);
 			iter = 0;
 		}
 		oldFaults = 0;	
@@ -81,6 +87,8 @@ int main()
 	auto end = std::chrono::high_resolution_clock::now();
 	time = end - start;
 	
+	std::cout << "Anomaly detected " << anom << " times." << std::endl;	
+		
 	std::cout << "Computation took: " << time.count() << "s." << std::endl;	
 }
 
