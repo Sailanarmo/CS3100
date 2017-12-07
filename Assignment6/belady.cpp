@@ -28,20 +28,24 @@ int main()
 	unsigned int iter = 0;
 	std::deque<int> fifo;
 	std::array<std::array<int,1000>,100> cont;
-	std::unordered_map<int,int> hash;
+	//std::unordered_map<int,int> hash;
 	std::chrono::duration<double> time;
-	//std::vector<std::vector<int>> cont;
+	std::vector<bool> hash;
+	
+	for (int i = 0; i < 1000; ++i)
+	{
+		hash.emplace_back(false);
+	}
 
 	for (int i = 0; i < 100; ++i)
 	{
 		std::vector<int> temp;
 		for(int j = 0; j < 1000; ++j)
 		{
-			//temp.emplace_back(randNum());
 			cont[i][j] = randNum();
 		}
-//		cont.emplace_back(temp);
 	}
+
 	
 	auto start = std::chrono::high_resolution_clock::now();	
 	for(int seq = 0; seq < 100; ++seq)
@@ -51,15 +55,15 @@ int main()
 			while(iter < cont[seq].size())
 			{
 				n = cont[seq][iter];
-				if (hash.count(n) == 0)
+				if (hash[n] == 0)
 				{
 					if (fifo.size() >= i+1)
 					{
 						pos = fifo.front();
-						hash.erase(pos);
+						hash[pos] = 0;
 						fifo.pop_front();
 					}
-					hash[n] = iter;
+					hash[n] = 1;
 					fifo.emplace_back(n);
 					faults++;
 				}
@@ -76,9 +80,11 @@ int main()
 			oldFaults = faults;
 			faults = 0;
 			hash.clear();
+			for (int i = 0; i < 1000; ++i)
+			{
+				hash.emplace_back(false);
+			}
 			fifo.clear();
-//			std::queue<int> empty;
-//			std::swap(empty, fifo);
 			iter = 0;
 		}
 		oldFaults = 0;	
