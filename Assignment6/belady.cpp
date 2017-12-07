@@ -22,6 +22,7 @@ int randNum()
 
 int main()
 {
+	std::srand(time(NULL));
 	int n, pos, oldFaults;
 	int faults = 0;
 	int anom = 0;
@@ -29,9 +30,10 @@ int main()
 	std::deque<int> fifo;
 	std::array<std::array<int,1000>,100> cont;
 	std::chrono::duration<double> time;
-	std::array<bool,1000> hash;
+	std::array<bool,250> hash;
 	
-	for (int i = 0; i < 1000; ++i)
+	auto start = std::chrono::high_resolution_clock::now();	
+	for (int i = 0; i < 250; ++i)
 	{
 		hash[i] = false;
 	}
@@ -40,12 +42,12 @@ int main()
 	{
 		for(int j = 0; j < 1000; ++j)
 		{
-			cont[i][j] = randNum();
+			//cont[i][j] = randNum();
+			cont[i][j] = std::rand()%250;
 		}
 	}
 
 	
-	auto start = std::chrono::high_resolution_clock::now();	
 	for(int seq = 0; seq < 100; ++seq)
 	{
 		for(unsigned int i = 0; i < 100; ++i)
@@ -77,7 +79,7 @@ int main()
 			}
 			oldFaults = faults;
 			faults = 0;
-			for (int i = 0; i < 1000; ++i)
+			for (int i = 0; i < 250; ++i)
 			{
 				hash[i] = false;
 			}
