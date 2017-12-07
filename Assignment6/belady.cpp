@@ -2,23 +2,8 @@
 #include <array>
 #include <vector>
 #include <deque>
-#include <random>
 #include <chrono>
 #include <unordered_map>
-
-int randNum()
-{
-	int rand = 0;
-
-	std::random_device rd;
-	std::mt19937 mt(rd());
-	std::uniform_int_distribution<> unif(1,250);
-
-	rand = unif(mt);
-
-	return rand;
-}
-
 
 int main()
 {
@@ -42,7 +27,6 @@ int main()
 	{
 		for(int j = 0; j < 1000; ++j)
 		{
-			//cont[i][j] = randNum();
 			cont[i][j] = std::rand()%250;
 		}
 	}
