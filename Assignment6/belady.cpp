@@ -28,18 +28,16 @@ int main()
 	unsigned int iter = 0;
 	std::deque<int> fifo;
 	std::array<std::array<int,1000>,100> cont;
-	//std::unordered_map<int,int> hash;
 	std::chrono::duration<double> time;
-	std::vector<bool> hash;
+	std::array<bool,1000> hash;
 	
 	for (int i = 0; i < 1000; ++i)
 	{
-		hash.emplace_back(false);
+		hash[i] = false;
 	}
 
 	for (int i = 0; i < 100; ++i)
 	{
-		std::vector<int> temp;
 		for(int j = 0; j < 1000; ++j)
 		{
 			cont[i][j] = randNum();
@@ -79,10 +77,9 @@ int main()
 			}
 			oldFaults = faults;
 			faults = 0;
-			hash.clear();
 			for (int i = 0; i < 1000; ++i)
 			{
-				hash.emplace_back(false);
+				hash[i] = false;
 			}
 			fifo.clear();
 			iter = 0;
