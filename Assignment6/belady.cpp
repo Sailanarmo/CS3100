@@ -18,11 +18,7 @@ int main()
 	std::array<bool,250> hash;
 	
 	auto start = std::chrono::high_resolution_clock::now();	
-	for (int i = 0; i < 250; ++i)
-	{
-		hash[i] = false;
-	}
-
+	
 	for (int i = 0; i < 100; ++i)
 	{
 		for(int j = 0; j < 1000; ++j)
@@ -67,6 +63,7 @@ int main()
 			{
 				hash[i] = false;
 			}
+
 			fifo.clear();
 			iter = 0;
 		}
